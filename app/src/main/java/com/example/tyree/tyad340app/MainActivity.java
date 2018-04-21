@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.util.Log;
+import android.content.Context;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
     private static final String TAG = MainActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,16 @@ public class MainActivity extends AppCompatActivity {
         Log.w(TAG, "OnCreate Method Warning");
 
 
+    }
+
+    //Toast method
+    public void makeToast(View view) {
+        Context context = getApplicationContext();
+        CharSequence text = "YA TOAST!";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 
     /** Called when the user taps the Send button */
