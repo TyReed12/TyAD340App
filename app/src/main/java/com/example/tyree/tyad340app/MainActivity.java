@@ -28,10 +28,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //Toast method
-    public void makeToast(View view) {
+    //Toast methods
+    public void clickButton2(View view) {
         Context context = getApplicationContext();
-        CharSequence text = "YA TOAST!";
+        CharSequence text = "You Clicked Button Two!";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
+
+    public void clickButton3(View view) {
+        Context context = getApplicationContext();
+        CharSequence text = "You Clicked Button Three!";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
+
+    public void clickButton4(View view) {
+        Context context = getApplicationContext();
+        CharSequence text = "You Clicked Button Four!";
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);
