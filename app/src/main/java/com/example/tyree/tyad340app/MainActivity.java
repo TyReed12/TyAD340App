@@ -9,6 +9,7 @@ import android.util.Log;
 import android.content.Context;
 import android.widget.Toast;
 
+
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
@@ -26,6 +27,12 @@ public class MainActivity extends AppCompatActivity {
         Log.w(TAG, "OnCreate Method Warning");
 
 
+    };
+
+    //starts MovieList activity
+    public void MovieList(View v) {
+        Intent goToMovieList = new Intent(MainActivity.this, MovieList.class);
+        startActivity(goToMovieList);
     }
 
     //Toast methods
