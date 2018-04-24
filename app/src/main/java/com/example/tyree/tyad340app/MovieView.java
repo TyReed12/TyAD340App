@@ -7,10 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 //import android.widget.ImageView;
 import android.widget.TextView;
 
-
 public class MovieView extends AppCompatActivity {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,24 +19,17 @@ public class MovieView extends AppCompatActivity {
         String title = intent2.getStringExtra("Title");
         String year = intent2.getStringExtra("Year");
         String director = intent2.getStringExtra("Director");
-        //String image = intent.getStringExtra("Image");
         String description = intent2.getStringExtra("Description");
 
         TextView titleView2 = findViewById(R.id.titleView2);
         TextView yearView2 = findViewById(R.id.yearView2);
         TextView descriptionView = findViewById(R.id.descriptionView);
         TextView directorView = findViewById(R.id.directorView);
-        //ImageView image = findViewById(R.id.image);
 
         titleView2.setText("Title: " + title);
         yearView2.setText("Year: " + year);
         directorView.setText("director: " + director);
         descriptionView.setText("Description: " + description);
-
-
-
-
-
     }
 
 }

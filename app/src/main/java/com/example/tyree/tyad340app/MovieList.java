@@ -131,8 +131,7 @@ public class MovieList extends AppCompatActivity {
                 super(v);
                 mTitle = v.findViewById(R.id.item_title);
                 mDetail = v.findViewById(R.id.item_year);
-
-
+                
                 v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -145,8 +144,6 @@ public class MovieList extends AppCompatActivity {
                         intent2.putExtra("Image", image[posit]);
                         intent2.putExtra("Description", description[posit]);
                         context.startActivity(intent2);
-
-
                     }
                 });
             }
