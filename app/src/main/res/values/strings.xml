@@ -6,4 +6,8 @@
     <string name="item_title">title</string>
     <string name="item_year">year</string>
     <string name="title_activity_movie_view">MovieView</string>
+    <string name="aboutTextViewTop">About AD 340 App</string>
+    <string name="aboutPageTexViewBody">This is an App that I made for Brenden Wests 340 Android Class in Spring 2018</string>
+    <string name="drawerOpen">Open navigation drawer</string>
+    <string name="drawerClose">Close navigation drawer</string>
 </resources>

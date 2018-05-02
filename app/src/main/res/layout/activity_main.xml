@@ -10,12 +10,12 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="50dp"
         android:text="About Tyler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         />
 
     <TextView
         android:id="@+id/textView2"
@@ -48,6 +48,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
+        android:layout_marginStart="4dp"
         android:text="- Originally from Champaign, IL"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="@+id/textView6"
@@ -58,8 +59,10 @@
         android:layout_width="357dp"
         android:layout_height="36dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:text="- Plans on competing in Killer Queen Arcade World Championship"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -68,7 +71,7 @@
         android:layout_width="242dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="@string/edit_message"
         android:inputType="textPersonName"
@@ -83,6 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
         android:onClick="sendMessage"
         android:text="@string/button_send"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,7 +122,7 @@
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="91dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="8dp"
         android:onClick="clickButton3"
         android:text="Button"
@@ -132,7 +136,7 @@
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="91dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="8dp"
         android:onClick="clickButton4"
         android:text="Button"
@@ -141,6 +145,22 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button4"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/holo_blue_dark"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+
+    </android.support.design.widget.AppBarLayout>
 
     <android.support.constraint.Group
         android:id="@+id/group"
