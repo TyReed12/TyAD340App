@@ -62,16 +62,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.putString(message,m);
         editor.commit();
+
+        //Toast
+        Context context = getApplicationContext();
+        CharSequence text = "Input Saved";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 
     public void clear(View v) {
         et_message.setText("");
+
+        //Toast
+        Context context = getApplicationContext();
+        CharSequence text = "Input Field Cleared";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 
     public void retrieve(View v) {
         sharedPreferences = getSharedPreferences(mypref,Context.MODE_PRIVATE);
-        if(sharedPreferences.contains(message)){
-            et_message.setText(sharedPreferences.getString(message,""));
+        if(sharedPreferences.contains(message)) {
+            et_message.setText(sharedPreferences.getString(message, ""));
+            Context context = getApplicationContext();
+            CharSequence text = "Last Saved Entry Retreived";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else{
+            Context context = getApplicationContext();
+            CharSequence text = "No Previous Entry Found";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
         }
     }
 
@@ -129,34 +155,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void MovieList(View v) {
         Intent goToMovieList = new Intent(MainActivity.this, MovieList.class);
         startActivity(goToMovieList);
-    }
-
-    //Toast methods
-    public void clickButton2(View view) {
-        Context context = getApplicationContext();
-        CharSequence text = "You Clicked Button Two!";
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-    }
-
-    public void clickButton3(View view) {
-        Context context = getApplicationContext();
-        CharSequence text = "You Clicked Button Three!";
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-    }
-
-    public void clickButton4(View view) {
-        Context context = getApplicationContext();
-        CharSequence text = "You Clicked Button Four!";
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
     }
 
     /** Called when the user taps the Send button */
