@@ -1,5 +1,6 @@
 package com.example.tyree.tyad340app;
 
+import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -21,6 +22,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     private static final String TAG = MainActivity.class.getSimpleName();
 
+    EditText et_message;
+    SharedPreferences sharedPreferences;
+    static final String mypref="mypref";
+    static final String message="messageKey";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +45,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        et_message=(EditText)findViewById(R.id.editText);
+        sharedPreferences = getSharedPreferences(mypref,Context.MODE_PRIVATE);
+        if(sharedPreferences.contains(message)){
+            et_message.setText(sharedPreferences.getString(message,""));
+        }
 
         //Log Errors, Debug, and Warning messages
         Log.e(TAG, "OnCreate Method Error");
         Log.d(TAG, "OnCreate Method Debug");
         Log.w(TAG, "OnCreate Method Warning");
+    }
+
+    public void save(View v){
+        String m=et_message.getText().toString();
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString(message,m);
+        editor.commit();
+    }
+
+    public void clear(View v) {
+        et_message.setText("");
+    }
+
+    public void retrieve(View v) {
+        sharedPreferences = getSharedPreferences(mypref,Context.MODE_PRIVATE);
+        if(sharedPreferences.contains(message)){
+            et_message.setText(sharedPreferences.getString(message,""));
+        }
     }
 
     @Override

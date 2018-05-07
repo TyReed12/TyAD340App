@@ -3,7 +3,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_drawer_movie_list"
-            android:icon="@android:drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_movie_black_24dp"
             android:title="Zombie Movies" />
         <item
             android:id="@+id/nav_drawer_about"
