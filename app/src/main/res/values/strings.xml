@@ -10,4 +10,11 @@
     <string name="aboutPageTexViewBody">This is an App that I made for Brenden Wests 340 Android Class in Spring 2018</string>
     <string name="drawerOpen">Open navigation drawer</string>
     <string name="drawerClose">Close navigation drawer</string>
+    <string name="internet_access_required">Internet access is required to view this activity</string>
+    <string name="internet_permission_not_available">Permission is not available. Requesting internet permission.</string>
+    <string name="internet_permission_available">Internet permission is available. Starting Activity.</string>
+    <string name="internet_permission_granted">Internet permission was granted. Starting Activity.</string>
+    <string name="internet_permission_denied">Internet permission request was denied.</string>
+    <string name="ok">OK</string>
+    <string name="internet_unavailable"><b>Activity could not be opened.</b>\nThis occurs when internet is not available or if the system has denied access (for example when internet access has been disabled).</string>
 </resources>

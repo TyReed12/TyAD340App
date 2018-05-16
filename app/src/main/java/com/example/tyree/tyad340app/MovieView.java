@@ -3,8 +3,6 @@ package com.example.tyree.tyad340app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-//import com.squareup.picasso.Picasso;
-//import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MovieView extends AppCompatActivity {

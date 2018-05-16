@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.tyree.tyad340app.About">
 
-
-    <!-- "Mark Favorite", should appear as action button if possible -->
     <item
         android:id="@+id/action_like"
         android:title="Like us on social media"

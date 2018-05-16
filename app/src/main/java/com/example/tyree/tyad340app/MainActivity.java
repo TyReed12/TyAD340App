@@ -1,7 +1,13 @@
 package com.example.tyree.tyad340app;
 
+import android.Manifest;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,19 +26,20 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+    public static final String EXTRA_MESSAGE = "com.example.tyree.tyad340app.MESSAGE";
     private static final String TAG = MainActivity.class.getSimpleName();
     private SharedPreferences sharedPrefs;
-    private String visitorName = "";
     private SharedPrefHelper mSharedPrefHelper;
 
     EditText et_message;
     SharedPreferences sharedPreferences;
     static final String mypref="mypref";
     static final String message="messageKey";
-    Boolean navoption = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_drawer);
 
@@ -54,16 +61,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         et_message=(EditText)findViewById(R.id.editText);
         sharedPreferences = getSharedPreferences(mypref,Context.MODE_PRIVATE);
+
         if(sharedPreferences.contains(message)){
             et_message.setText(sharedPreferences.getString(message,""));
         }
 
-        //Log Errors, Debug, and Warning messages
-        Log.e(TAG, "OnCreate Method Error");
-        Log.d(TAG, "OnCreate Method Debug");
-        Log.w(TAG, "OnCreate Method Warning");
     }
-
 
     public boolean inputIsValid(String str){
         if (str.length() == 0){
@@ -156,13 +159,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
 
             default:
-                // If we got here, the user's action was not recognized.
+                //  user's action was not recognized.
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -192,15 +194,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             else{
             Intent intent = new Intent(this, MovieList.class);
             startActivity(intent);
+          }
         }
+         else if (id == R.id.nav_drawer_cameras) {
+                boolean test = checkEditTextField();
+                if (test == false) {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Input Required before leaving page";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+                else{
+                    Intent intent = new Intent(this, LiveCamActivity.class);
+                    startActivity(intent);
+            }
         }
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-
+    //starts LiveCamActivity
+    public void LiveCamActivity (View v) {
+        boolean test = checkEditTextField();
+        if (test == false) {
+            return;
+        }
+        else {
+        Intent gotoLiveCamActivity = new Intent(MainActivity.this, LiveCamActivity.class);
+            startActivity(gotoLiveCamActivity);
+        }
+    }
 
     //starts MovieList activity
     public void MovieList(View v) {

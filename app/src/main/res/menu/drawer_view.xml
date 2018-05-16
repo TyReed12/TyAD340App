@@ -5,9 +5,17 @@
             android:id="@+id/nav_drawer_movie_list"
             android:icon="@drawable/ic_movie_black_24dp"
             android:title="Zombie Movies" />
+
+        <item
+            android:id="@+id/nav_drawer_cameras"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title="SDOT Cameras"/>
+
         <item
             android:id="@+id/nav_drawer_about"
             android:icon="@android:drawable/ic_menu_info_details"
             android:title="About this app" />
+
+
     </group>
 </menu>
