@@ -1,6 +1,7 @@
 package com.example.tyree.tyad340app;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
@@ -24,10 +25,13 @@ import android.util.Log;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     public static final String EXTRA_MESSAGE = "com.example.tyree.tyad340app.MESSAGE";
-    private static final String TAG = MainActivity.class.getSimpleName();
+
     private SharedPreferences sharedPrefs;
     private SharedPrefHelper mSharedPrefHelper;
 
@@ -35,6 +39,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     SharedPreferences sharedPreferences;
     static final String mypref="mypref";
     static final String message="messageKey";
+
+    private static final String TAG ="LocationActivity";
+
+    private static final int ERROR_DIALOG_REQUEST = 9001;
 
 
     @Override
@@ -73,6 +81,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return false;
         }
         return true;
+    }
+
+
+    public boolean isServicesOK(){
+        Log.d(TAG, "isServicesOK: checking google services version");
+
+        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(MainActivity.this);
+        if(available == ConnectionResult.SUCCESS){
+            //everything is okay and user can make map requests
+            Log.d(TAG,"Google Play Services is working");
+            return true;
+        }
+        else if (GoogleApiAvailability.getInstance().isUserResolvableError(available)) {
+            //an error occured but we can resolve it
+            Log.d(TAG, "isServicesOK: an error occured but we can fix it");
+            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MainActivity.this, available, ERROR_DIALOG_REQUEST);
+        }else{
+            Toast.makeText(this, "You can't make map requests", Toast.LENGTH_SHORT).show();
+        }
+        return false;
     }
 
     //check to see if there edit text field is empty
@@ -210,9 +238,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     startActivity(intent);
             }
         }
+        else if (id == R.id.nav_drawer_location) {
+            boolean test = checkEditTextField();
+            if (test == false) {
+                Context context = getApplicationContext();
+                CharSequence text = "Input Required before leaving page";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+            else{
+                Intent intent = new Intent(this, LocationActivity.class);
+                startActivity(intent);
+            }
+        }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    //starts LocationActivity
+    public void LocationActivity (View v) {
+        boolean test = isServicesOK();
+        boolean test2 = checkEditTextField();
+        if(test == false) {
+            return;
+        }
+        else if(test2 == false) {
+            return;
+        }
+        else {
+            Intent gotoLocationActivity = new Intent(MainActivity.this, LocationActivity.class);
+            startActivity(gotoLocationActivity);
+        }
     }
 
     //starts LiveCamActivity
