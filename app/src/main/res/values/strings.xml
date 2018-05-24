@@ -17,4 +17,7 @@
     <string name="internet_permission_denied">Internet permission request was denied.</string>
     <string name="ok">OK</string>
     <string name="internet_unavailable"><b>Activity could not be opened.</b>\nThis occurs when internet is not available or if the system has denied access (for example when internet access has been disabled).</string>
+    <string name="camera_title">Traffic Cameras</string>
+    <string name="map_title">Cameras on Map</string>
+    <string name="window_street_name">Street</string>
 </resources>

@@ -64,9 +64,12 @@
         <activity
             android:name=".LiveCamActivity"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".LocationActivity"></activity>
+        <activity
+            android:name=".LocationActivity"
+            android:parentActivityName=".MainActivity"/>
+
     </application>
 
 </manifest>
